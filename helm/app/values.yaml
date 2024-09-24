@@ -1,0 +1,21 @@
+app:
+  name: app
+  env:
+    - name: SERVER_ID
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.name
+deployment:
+  name: app
+  image: 211125571131.dkr.ecr.us-east-1.amazonaws.com/eks-service-app-ecr:latest
+  containerPort: 5000
+  replicas: 2
+  limits:
+    memory: "128Mi"
+    cpu: "500m"
+  imagePullPolicy: "IfNotPresent"
+service:
+  name: app-service
+  port: 8080
+  targetPort: 5000
+  type: LoadBalancer
