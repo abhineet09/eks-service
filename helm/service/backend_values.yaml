@@ -1,0 +1,21 @@
+app:
+  name: backend
+  env:
+    - name: SERVER_ID
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.name
+deployment:
+  name: backend
+  image: 211125571131.dkr.ecr.us-east-1.amazonaws.com/eks-service-backend-ecr:latest
+  containerPort: 5000
+  replicas: 2
+  limits:
+    memory: "128Mi"
+    cpu: "100m"
+  imagePullPolicy: "Always"
+service:
+  name: backend-service
+  port: 80
+  targetPort: 5000
+  type: NodePort

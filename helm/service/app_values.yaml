@@ -8,14 +8,14 @@ app:
 deployment:
   name: app
   image: 211125571131.dkr.ecr.us-east-1.amazonaws.com/eks-service-app-ecr:latest
-  containerPort: 5000
+  containerPort: 8080
   replicas: 2
   limits:
     memory: "128Mi"
-    cpu: "500m"
-  imagePullPolicy: "IfNotPresent"
+    cpu: "100m"
+  imagePullPolicy: "Always"
 service:
   name: app-service
-  port: 8080
-  targetPort: 5000
-  type: LoadBalancer
+  port: 80
+  targetPort: 8080
+  type: NodePort

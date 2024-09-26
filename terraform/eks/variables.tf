@@ -15,3 +15,13 @@ variable "subnet_ids" {
   type        = list(string)
   default     = ["subnet-026e20aa55430f3ba", "subnet-0beb17dcd186293af"]
 }
+
+variable "project-prefix" {
+  description = "project name"
+  type = string
+  default = "eks-service"
+}
+
+variable "admin_user_arn" {
+  type = string
+}
