@@ -2,6 +2,7 @@ from flask import Flask
 import os
 import sys
 import logging
+import random
 
 app = Flask(__name__)
 
@@ -13,7 +14,13 @@ server_id = os.getenv('SERVER_ID')
 
 @app.route('/app')
 def hello():
-    return f"Hello, World! from App Server {server_id}"
+    # Randomly select an upper limit between 10,000 and 10 million
+    upper_limit = random.randint(10000, 10000000)
+    
+    # Increase CPU utilization with a mathematical operation
+    result = sum(i * i for i in range(1, upper_limit + 1))
+
+    return f"Hello, World! from App Server {server_id}. Sum of squares up to {upper_limit}: {result}"
 
 @app.route('/')
 def healthCheck():

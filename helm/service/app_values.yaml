@@ -19,3 +19,7 @@ service:
   port: 80
   targetPort: 8080
   type: NodePort
+hpa:
+  minReplicas: 1
+  maxReplicas: 5
+  cpuAverageUtilization: 30
