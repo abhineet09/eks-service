@@ -9,7 +9,7 @@ deployment:
   name: app
   image: 211125571131.dkr.ecr.us-east-1.amazonaws.com/eks-service-app-ecr:latest
   containerPort: 8080
-  replicas: 2
+  replicas: 1
   limits:
     memory: "128Mi"
     cpu: "100m"

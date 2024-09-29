@@ -1,0 +1,15 @@
+volumeName: "prometheus-ebs"
+volumeSize: "10Gi"
+volumeMode: "Filesystem"
+accessModes:
+  - "ReadWriteOnce"
+volumeID: "PLACEHOLDER_FOR_SENSITIVE_VARIABLE"
+fsType: "ext4"
+volumeType: "gp3" 
+reclaimPolicy: "Retain"
+volumeBindingMode: "WaitForFirstConsumer"
+storageClassName: ebs-sc
+storageClassIopsPerGB: "50"
+storageClassEncryption: "true"
+storageClassValidZones: 
+  - "us-east-1a"

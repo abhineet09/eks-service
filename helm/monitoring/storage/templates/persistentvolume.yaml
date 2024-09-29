@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Values.volumeName }}-pv
+spec:
+  accessModes:
+  {{- range .Values.accessModes }}
+  - {{ . }}
+  {{- end }}
+  csi:
+    driver: ebs.csi.aws.com
+    fsType: {{ .Values.fsType }}
+    volumeHandle: {{ .Values.volumeID }}
+  capacity:
+    storage: {{ .Values.volumeSize }}
+  persistentVolumeReclaimPolicy: {{ .Values.reclaimPolicy }}
+  storageClassName: {{ .Values.storageClassName }}
